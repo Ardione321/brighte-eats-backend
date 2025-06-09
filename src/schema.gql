@@ -1,0 +1,48 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Service {
+  id: ID!
+  type: String!
+}
+
+type Lead {
+  id: ID!
+  name: String!
+  email: String!
+  mobile: String!
+  postcode: String!
+  services: [Service!]!
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  leads: [Lead!]!
+  lead(id: ID!): Lead
+  services: [Service!]!
+  service(id: ID!): Service
+}
+
+type Mutation {
+  createLead(createLeadInput: CreateLeadInput!): Lead!
+  createService(createServiceInput: CreateServiceInput!): Service!
+}
+
+input CreateLeadInput {
+  name: String!
+  email: String!
+  mobile: String!
+  postcode: String!
+  services: [ID!]!
+}
+
+input CreateServiceInput {
+  type: String!
+  leads: [ID!]!
+}

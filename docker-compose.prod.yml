@@ -16,18 +16,17 @@ services:
   app:
     build:
       context: .
-      target: builder 
-    restart: on-failure
+      target: production  
+    restart: always
     depends_on:
       - db
     environment:
       DATABASE_URL: postgres://postgres:postgres@db:5432/brighte_db
+      NODE_ENV: production
     ports:
       - "3000:3000"
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules  
-    command: ./entrypoint.sh 
+    volumes: []  # No volume mounts in production
+    command: ["./entrypoint.sh"]
 
 volumes:
   pgdata:

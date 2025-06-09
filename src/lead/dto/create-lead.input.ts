@@ -28,5 +28,5 @@ export class CreateLeadInput {
 
   @Field(() => [ID])
   @IsArray()
-  services: string[]; // ['delivery', 'pickup', 'payment']
+  services: string[];
 }

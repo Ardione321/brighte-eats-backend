@@ -1,0 +1,43 @@
+# Node dependencies (will be installed fresh inside container)
+node_modules
+
+# Output folders
+dist
+build
+
+# Prisma generated files (will be generated during build)
+.prisma
+.prisma-client
+
+# Environment variables
+.env
+.env.*  # .env.development, .env.production, etc.
+
+# Logs
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# OS/system files
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose*.yml
+
+# Test files and configs
+coverage
+*.spec.ts
+*.test.ts
+jest.config.*
+test
+
+# Editor / IDE
+.vscode
+.idea
+*.swp

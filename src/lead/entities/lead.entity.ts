@@ -1,5 +1,5 @@
 import { ObjectType, Field, ID } from '@nestjs/graphql';
-import { Service } from 'src/service/entities/service.entity';
+import { Service } from '../../service/entities/service.entity';
 
 @ObjectType()
 export class Lead {

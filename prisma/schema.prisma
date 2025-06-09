@@ -16,8 +16,8 @@ datasource db {
 model Lead {
   id        String    @id @default(uuid())
   name      String
-  email     String
-  mobile    String
+  email     String    @unique
+  mobile    String    @unique
   postcode  String
   services  Service[] @relation("LeadToService")
   createdAt DateTime  @default(now())
@@ -25,6 +25,6 @@ model Lead {
 
 model Service {
   id    String @id @default(uuid())
-  type  String
+  type  String @unique
   leads Lead[] @relation("LeadToService")
 }

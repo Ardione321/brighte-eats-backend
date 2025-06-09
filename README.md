@@ -1,20 +1,22 @@
+
 # Brighte Eats Backend
 
-A simple backend service built using **NestJS**, **Prisma**, and **GraphQL** for managing leads and services.
+A simple backend service built with **NestJS**, **Prisma**, and **GraphQL** for managing leads and services.
 
 ---
 
-## Tech Stack
+## 🚀 Tech Stack
 
-- [NestJS](https://nestjs.com/) - Progressive Node.js framework
-- [GraphQL](https://graphql.org/) - API Query Language
-- [Prisma ORM](https://www.prisma.io/) - Database ORM for PostgreSQL
-- [PostgreSQL](https://www.postgresql.org/) - Relational Database
+- **NestJS** – Progressive Node.js framework  
+- **GraphQL** – API Query Language  
+- **Prisma ORM** – Database ORM for PostgreSQL  
+- **PostgreSQL** – Relational Database  
 
 ---
 
-## Project Structure
+## 🗂 Project Structure
 
+```
 src/
 ├── lead/
 │   ├── dto/
@@ -40,76 +42,110 @@ src/
 │   └── seed.ts
 ├── utils/
 │   └── prisma-error-handler.ts
+```
 
+---
 
-## Features
+## ✨ Features
 
-- Create a new Lead with selected Services.
-- Fetch all Leads or a single Lead by ID.
-- Validate input data using `class-validator`.
-- GraphQL resolvers for querying and mutating Lead data.
-- Relational modeling using Prisma (Many-to-Many: Lead ↔ Service).
-- Unit tests using Jest.
+- Create a new Lead with selected Services  
+- Fetch all Leads or a single Lead by ID  
+- Input validation using `class-validator`  
+- GraphQL resolvers for querying and mutating data  
+- Relational modeling with Prisma (Many-to-Many: Lead ↔ Service)  
+- Unit tests with Jest  
 
-## Database Schema
+---
 
-prisma
-  model Lead {
-  id String @id @default(uuid())
-  name String
-  email String @unique
-  mobile String @unique
-  postcode String
-  services Service[] @relation("LeadToService")
-  createdAt DateTime @default(now())
+## 🗄 Database Schema (Prisma)
+
+```prisma
+model Lead {
+  id        String    @id @default(uuid())
+  name      String
+  email     String    @unique
+  mobile    String    @unique
+  postcode  String
+  services  Service[] @relation("LeadToService")
+  createdAt DateTime  @default(now())
 }
 
 model Service {
-  id String @id @default(uuid())
-  type String @unique
-  leads Lead[] @relation("LeadToService")
+  id    String  @id @default(uuid())
+  type  String  @unique
+  leads Lead[]  @relation("LeadToService")
 }
+```
 
+---
 
-## Setup Instructions
+## ⚙️ Setup Instructions
 
+### Clone the repository
+
+```bash
 git clone https://github.com/your-username/brighte-eats-backend.git
 cd brighte-eats-backend
+```
 
-## Install Dependencies
+### Install dependencies
 
+```bash
 npm install
+```
 
-## Configure Environment
+### Configure environment variables
 
-Create a .env file with your PostgreSQL connection string:
+Create a `.env` file in the root directory with your PostgreSQL connection string:
+
+```env
 DATABASE_URL="postgresql://user:password@localhost:5432/brighte_db"
+```
 
-## Generate Prisma Client
+### Generate Prisma client
 
+```bash
 npx prisma generate
+```
 
-## Run Database Migrations (optional)
+### Run database migrations (optional)
 
+```bash
 npx prisma migrate dev --name init
+```
 
-## Seed Initial Data
+### Seed initial data
 
+```bash
 npm run seed
+```
 
-## Start Development Server
+### Start the development server
 
-GraphQL Playground will be available at http://localhost:3000/graphql.
+```bash
 npm run start:dev
+```
 
-## Running Tests
+GraphQL Playground will be available at:  
+[http://localhost:3000/graphql](http://localhost:3000/graphql)
 
-To run unit tests:
+---
+
+## 🧪 Running Tests
+
+Run unit tests using Jest:
+
+```bash
 npm run test
+```
 
-## GrapQL Sample Queries
+---
 
-Create a Lead:
+## 📋 Sample GraphQL Queries
+
+### Create a Lead
+
+```graphql
 mutation {
   createLead(createLeadInput: {
     name: "John Doe 5",
@@ -117,7 +153,7 @@ mutation {
     mobile: "+639171234565",
     postcode: "1234",
     services: [
-      "faba462f-a1e8-4385-bf18-852846c775a9s",
+      "faba462f-a1e8-4385-bf18-852846c775a9",
       "f98bcd5d-4a41-4f58-a446-03d02b53e4d7"
     ]
   }) {
@@ -129,8 +165,11 @@ mutation {
     }
   }
 }
+```
 
-Get All Leads:
+### Get All Leads
+
+```graphql
 query {
   leads {
     id
@@ -141,8 +180,11 @@ query {
     }
   }
 }
+```
 
-Get Specific Lead By Id:
+### Get Specific Lead By ID
+
+```graphql
 query {
   lead(id: "f0ebd16b-09f4-47ef-aa56-adb0ab68cb4a") {
     id
@@ -156,25 +198,34 @@ query {
     }
   }
 }
+```
 
-Get All Services: 
+### Get All Services
+
+```graphql
 query {
   services {
     id
     type
   }
 }
+```
 
-Get Specific Service By ID: 
+### Get Specific Service By ID
+
+```graphql
 query {
   service(id: "faba462f-a1e8-4385-bf18-852846c775a9") {
     id
     type
   }
 }
+```
 
+---
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+---

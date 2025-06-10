@@ -108,7 +108,7 @@ DATABASE_URL="postgresql://user:password@localhost:5432/brighte_db"
 npx prisma generate
 ```
 
-### Run database migrations (optional)
+### Run database migrations
 
 ```bash
 npx prisma migrate dev --name init

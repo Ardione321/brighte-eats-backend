@@ -28,5 +28,5 @@ export class CreateLeadInput {
 
   @Field(() => [ID])
   @IsArray()
-  services: string[];
+  services: string[]; 
 }
